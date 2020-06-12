@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
-import ContactForm from './ContactForm/ContactFormContainer';
-import ContactList from './ContactList/ContactListContainer';
-import Filter from './Filter/FilterContainer';
 import Header from './Header/Header';
 import TabletShape from './TabletShape/TabletShape';
+import ContactsPage from '../pages/ContactsPage';
 import PopUpNotification from './PopUpNotification/PopUpNotification';
-import slideTransition from '../transitions/slide.module.css';
 import slideReverseTransition from '../transitions/slide-reverse.module.css';
 
 class App extends Component {
@@ -28,7 +25,7 @@ class App extends Component {
   }
 
   render() {
-    const { contacts, isAlreadyinContacts } = this.props;
+    const { isAlreadyinContacts } = this.props;
 
     return (
       <TabletShape>
@@ -41,24 +38,7 @@ class App extends Component {
         >
           <PopUpNotification title="Contact already exist!" />
         </CSSTransition>
-
-        <ContactForm />
-        <CSSTransition
-          in={contacts.length > 1}
-          timeout={250}
-          classNames={slideTransition}
-          unmountOnExit
-        >
-          <Filter />
-        </CSSTransition>
-        <CSSTransition
-          in={contacts.length > 0}
-          timeout={250}
-          classNames={slideTransition}
-          unmountOnExit
-        >
-          <ContactList />
-        </CSSTransition>
+        <ContactsPage />
       </TabletShape>
     );
   }

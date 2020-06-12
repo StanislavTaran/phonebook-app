@@ -1,7 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 
 import ReduxThunk from 'redux-thunk';
-import rootReducer from './reducer';
+import contacts from './reducer';
+import session from './session/sessionReducers';
+
+const rootReducer = combineReducers({
+  contacts,
+  session,
+});
 
 const middlewares = [ReduxThunk];
 
