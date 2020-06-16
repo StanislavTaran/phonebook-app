@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import styles from './LoginForm.module.css';
 
 import * as sessionOperations from '../../redux/session/sessionOperations';
 
@@ -25,15 +26,30 @@ class LoginForm extends Component {
     const { email, password } = this.state;
     return (
       <form onSubmit={this.submitHandler}>
-        <label>
-          <input type="email" name="email" value={email} onChange={this.changeHandler} />
+        <label className={styles.label}>
+          Email
+          <input
+            className={styles.input}
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.changeHandler}
+          />
         </label>
-        Email
-        <label>
+
+        <label className={styles.label}>
           Password
-          <input type="password" name="password" value={password} onChange={this.changeHandler} />
+          <input
+            className={styles.input}
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.changeHandler}
+          />
         </label>
-        <button type="submit">Log In</button>
+        <button className={styles.button} type="submit">
+          Log In
+        </button>
       </form>
     );
   }

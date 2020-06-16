@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
-import Header from './Header/Header';
+import Header from './Header/HeaderContainer';
 import TabletShape from './TabletShape/TabletShape';
 // import ContactsPage from '../pages/ContactsPage';
 import PopUpNotification from './PopUpNotification/PopUpNotification';
 import slideReverseTransition from '../transitions/slide-reverse.module.css';
-import LoginPage from '../pages/LogInPage';
-import SignUpPage from '../pages/SignUpPage';
+import PagesRouter from '../routes/PagesRouter';
 
 class App extends Component {
   componentDidMount() {
@@ -40,9 +39,7 @@ class App extends Component {
         >
           <PopUpNotification title="Contact already exist!" />
         </CSSTransition>
-        <SignUpPage />
-        <LoginPage />
-        {/* <ContactsPage /> */}
+        <PagesRouter />
       </TabletShape>
     );
   }

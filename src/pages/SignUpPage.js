@@ -1,5 +1,6 @@
 import React from 'react';
 import SignupForm from '../components/SignupForm/SignupForm';
+import WithAuthRedirect from '../HOCs/WithAuthRedirect';
 
 const SignupPage = () => (
   <>
@@ -8,4 +9,4 @@ const SignupPage = () => (
   </>
 );
 
-export default SignupPage;
+export default WithAuthRedirect(SignupPage);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import styles from './SignupForm.module.css';
 
 import * as sessionOperations from '../../redux/session/sessionOperations';
 
@@ -24,20 +25,34 @@ class SignUpForm extends Component {
     const { name, email, password } = this.state;
     return (
       <form onSubmit={this.submitHandler}>
-        <label>
+        <label className={styles.label}>
           Name
-          <input name="name" value={name} onChange={this.changeHandler} />
+          <input className={styles.input} name="name" value={name} onChange={this.changeHandler} />
         </label>
-        <label>
+        <label className={styles.label}>
           Email
-          <input type="email" name="email" value={email} onChange={this.changeHandler} />
+          <input
+            className={styles.input}
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.changeHandler}
+          />
         </label>
-        <label>
+        <label className={styles.label}>
           Password
-          <input type="password" name="password" value={password} onChange={this.changeHandler} />
+          <input
+            className={styles.input}
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.changeHandler}
+          />
         </label>
 
-        <button type="submit">Sign Up</button>
+        <button className={styles.button} type="submit">
+          Sign Up
+        </button>
       </form>
     );
   }

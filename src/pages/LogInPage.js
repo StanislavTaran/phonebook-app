@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm/LoginForm';
+import WithAuthRedirect from '../HOCs/WithAuthRedirect';
 
 const LoginPage = () => (
   <>
@@ -8,4 +9,4 @@ const LoginPage = () => (
   </>
 );
 
-export default LoginPage;
+export default WithAuthRedirect(LoginPage);
