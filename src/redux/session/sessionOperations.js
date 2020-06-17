@@ -1,6 +1,7 @@
 /* eslint-disable dot-notation */
 import axios from 'axios';
 import * as actions from './sessionActions';
+import { getToken } from './sessionSelectors';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
@@ -36,6 +37,28 @@ export const signup = credentials => dispatch => {
     })
     .catch(error => {
       dispatch(actions.signupError(error.message));
+    });
+};
+
+export const refreshUser = () => (dispatch, getState) => {
+  const token = getToken(getState());
+
+  if (!token) {
+    return;
+  }
+
+  setAuthToken(token);
+
+  dispatch(actions.refreshUserRequest());
+
+  axios
+    .get('/users/current')
+    .then(res => {
+      dispatch(actions.refreshUserSucces(res));
+    })
+    .catch(error => {
+      clearAuthToken();
+      dispatch(actions.refreshUserError(error.message));
     });
 };
 

@@ -4,8 +4,9 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import ReduxThunk from 'redux-thunk';
-import contacts from './reducer';
+import contacts from './phonebook/reducer';
 import session from './session/sessionReducers';
+import account from './account/accountReducers';
 
 const persistConfig = {
   key: 'session',
@@ -15,6 +16,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   contacts,
+  account,
   session: persistReducer(persistConfig, session),
 });
 

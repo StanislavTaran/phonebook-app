@@ -73,7 +73,7 @@ class ContactForm extends Component {
         if (isContactExist) {
           showNotification();
         } else {
-          addContact(name, number);
+          addContact({ name, number });
           this.resetForm();
         }
       })

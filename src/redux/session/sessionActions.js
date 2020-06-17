@@ -1,18 +1,18 @@
 import { createAction } from '@reduxjs/toolkit';
 // REFRESH USER
-export const refreshUserRequest = createAction('REFRESH_USER_REQUEST');
-export const refreshUserSucces = createAction('REFRESH_USER_SUCCES');
-export const refreshUserError = createAction('REFRESH_USER_ERROR');
+export const refreshUserRequest = createAction('session/REFRESH_USER_REQUEST');
+export const refreshUserSucces = createAction('session/REFRESH_USER_SUCCES');
+export const refreshUserError = createAction('session/REFRESH_USER_ERROR');
 
 // LOGIN
-export const logInRequest = createAction('LOGIN_REQUEST');
-export const logInSucces = createAction('LOGIN_SUCCES');
-export const logInError = createAction('LOGIN_ERROR');
+export const logInRequest = createAction('session/LOGIN_REQUEST');
+export const logInSucces = createAction('session/LOGIN_SUCCES');
+export const logInError = createAction('session/LOGIN_ERROR');
 
 // SIGNUP
-export const signupRequest = createAction('SIGNUP_REQUEST');
-export const signupSucces = createAction('SIGNUP_SUCCES');
-export const signupError = createAction('SIGNUP_ERROR');
+export const signupRequest = createAction('session/SIGNUP_REQUEST');
+export const signupSucces = createAction('session/SIGNUP_SUCCES');
+export const signupError = createAction('session/SIGNUP_ERROR');
 
 // LOGOUT
-export const logout = createAction('LOGOUT');
+export const logout = createAction('session/LOGOUT');

@@ -40,6 +40,12 @@ const Header = ({ email, onLogout, isAuthenticated }) => {
             CONTACTS
           </NavLink>
         )}
+
+        {isAuthenticated && (
+          <NavLink className={styles.link} activeClassName={styles.activeLink} to="/account">
+            ACCOUNT
+          </NavLink>
+        )}
       </nav>
       {isAuthenticated && (
         <div>
@@ -53,9 +59,13 @@ const Header = ({ email, onLogout, isAuthenticated }) => {
   );
 };
 
+Header.defaultProps = {
+  email: 'PROFILE',
+};
+
 Header.propTypes = {
   onLogout: propTypes.func.isRequired,
-  email: propTypes.string.isRequired,
+  email: propTypes.string,
   isAuthenticated: propTypes.bool.isRequired,
 };
 

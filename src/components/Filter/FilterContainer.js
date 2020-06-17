@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { changeFilterAction } from '../../redux/actions';
+import { changeFilterAction } from '../../redux/phonebook/actions';
 import Filter from './Filter';
 
 const mapDispatchToProps = dispatch => ({

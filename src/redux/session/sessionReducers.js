@@ -5,10 +5,10 @@ import * as actions from './sessionActions';
 const user = createReducer(
   {},
   {
-    [actions.logInSucces]: (state, action) => action.payload,
-    [actions.signupSucces]: (state, action) => action.payload,
-    [actions.refreshUserSucces]: (state, action) => action.payload,
-    [actions.logout]: () => {},
+    [actions.logInSucces]: (state, action) => action.payload.data.user,
+    [actions.signupSucces]: (state, action) => action.payload.data.user,
+    [actions.refreshUserSucces]: (state, action) => action.payload.data,
+    [actions.logout]: () => null,
   },
 );
 
@@ -20,16 +20,17 @@ const authenticated = createReducer(false, {
 });
 
 const token = createReducer(null, {
-  [actions.logInSucces]: (state, action) => action.payload,
-  [actions.signupSucces]: (state, action) => action.payload,
-  [actions.refreshUserSucces]: (state, action) => action.payload,
-  [actions.logout]: () => {},
+  [actions.logInSucces]: (state, action) => action.payload.data.token,
+  [actions.signupSucces]: (state, action) => action.payload.data.token,
+  [actions.logout]: () => null,
 });
 
 const error = createReducer(null, {
   [actions.logInError]: (state, action) => action.payload,
   [actions.signupError]: (state, action) => action.payload,
   [actions.refreshUserError]: (state, action) => action.payload,
+  [actions.logInSucces]: () => ({}),
+  [actions.signupSucces]: () => ({}),
 });
 
 export default combineReducers({

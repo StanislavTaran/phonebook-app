@@ -10,19 +10,8 @@ import PagesRouter from '../routes/PagesRouter';
 
 class App extends Component {
   componentDidMount() {
-    const persistedContacts = localStorage.getItem('contacts');
-    const { loadContactsFromLS } = this.props;
-
-    if (persistedContacts) {
-      loadContactsFromLS(JSON.parse(persistedContacts));
-    }
-  }
-
-  componentDidUpdate(prevState) {
-    const { contacts } = this.props;
-    if (prevState.contacts !== contacts) {
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-    }
+    const { refreshCurrentUser } = this.props;
+    refreshCurrentUser();
   }
 
   render() {
@@ -46,15 +35,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-  contacts: propTypes.arrayOf(
-    propTypes.shape({
-      id: propTypes.string.isRequired,
-      name: propTypes.string.isRequired,
-      number: propTypes.string.isRequired,
-    }),
-  ).isRequired,
   isAlreadyinContacts: propTypes.bool.isRequired,
-  loadContactsFromLS: propTypes.func.isRequired,
+  refreshCurrentUser: propTypes.func.isRequired,
 };
 
 export default App;

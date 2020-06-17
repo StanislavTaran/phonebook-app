@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { addContactAction } from '../../redux/actions';
-import { toogleExistFlag } from '../../redux/operations';
-import { getAllContacts } from '../../redux/selectors';
+import { toogleExistFlag, addContact } from '../../redux/phonebook/operations';
+import { getAllContacts } from '../../redux/phonebook/selectors';
 import ContactForm from './ContactForm';
 
 const mapStateToProps = state => {
@@ -12,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addContact: (name, number) => dispatch(addContactAction(name, number)),
+    addContact: contact => dispatch(addContact(contact)),
     showNotification: () => dispatch(toogleExistFlag()),
   };
 };
