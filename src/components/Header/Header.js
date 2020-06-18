@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
+import { Button } from '@material-ui/core';
 import { CSSTransition } from 'react-transition-group';
 import { NavLink } from 'react-router-dom';
 import fadeTransition from '../../transitions/fade.module.css';
@@ -15,47 +16,55 @@ const Header = ({ email, onLogout, isAuthenticated }) => {
   }, []);
 
   return (
-    <header className={styles.header}>
-      <div>
-        <CSSTransition in={state.isPageLoaded} timeout={500} classNames={fadeTransition}>
-          <h3 className={styles.title}>Phonebook</h3>
-        </CSSTransition>
-      </div>
-      <nav>
-        <NavLink className={styles.link} activeClassName={styles.activeLink} to="/" exact>
-          HOME
-        </NavLink>
-        {!isAuthenticated && (
-          <NavLink className={styles.link} activeClassName={styles.activeLink} to="/login">
-            LOG IN
-          </NavLink>
-        )}
-        {!isAuthenticated && (
-          <NavLink className={styles.link} activeClassName={styles.activeLink} to="/signup">
-            SIGN UP
-          </NavLink>
-        )}
-        {isAuthenticated && (
-          <NavLink className={styles.link} activeClassName={styles.activeLink} to="/contacts">
-            CONTACTS
-          </NavLink>
-        )}
-
-        {isAuthenticated && (
-          <NavLink className={styles.link} activeClassName={styles.activeLink} to="/account">
-            ACCOUNT
-          </NavLink>
-        )}
-      </nav>
-      {isAuthenticated && (
+    <>
+      <header className={styles.header}>
         <div>
-          <h2>{email}</h2>
-          <button type="button" onClick={onLogout}>
-            LOG OUT
-          </button>
+          <CSSTransition in={state.isPageLoaded} timeout={500} classNames={fadeTransition}>
+            <h3 className={styles.title}>Phonebook</h3>
+          </CSSTransition>
         </div>
-      )}
-    </header>
+        <nav>
+          <NavLink className={styles.link} activeClassName={styles.activeLink} to="/" exact>
+            HOME
+          </NavLink>
+          {!isAuthenticated && (
+            <NavLink className={styles.link} activeClassName={styles.activeLink} to="/login">
+              LOG IN
+            </NavLink>
+          )}
+          {!isAuthenticated && (
+            <NavLink className={styles.link} activeClassName={styles.activeLink} to="/signup">
+              SIGN UP
+            </NavLink>
+          )}
+          {isAuthenticated && (
+            <NavLink className={styles.link} activeClassName={styles.activeLink} to="/contacts">
+              CONTACTS
+            </NavLink>
+          )}
+
+          {isAuthenticated && (
+            <NavLink className={styles.link} activeClassName={styles.activeLink} to="/account">
+              ACCOUNT
+            </NavLink>
+          )}
+        </nav>
+        {isAuthenticated && (
+          <div className={styles.userBlockContainer}>
+            <h3 className={styles.userEmail}>{email}</h3>
+            <Button
+              type="button"
+              onClick={onLogout}
+              color="secondary"
+              size="small"
+              variant="outlined"
+            >
+              LOG OUT
+            </Button>
+          </div>
+        )}
+      </header>
+    </>
   );
 };
 

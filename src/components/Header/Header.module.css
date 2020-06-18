@@ -8,8 +8,9 @@
   position: sticky;
   top: 0;
   background-color: #fff;
-  height: 70px;
+  height: 100px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   -webkit-box-shadow: 1px 1px 2px 1px rgba(166, 164, 166, 1);
   -moz-box-shadow: 1px 1px 2px 1px rgba(166, 164, 166, 1);
@@ -29,4 +30,13 @@
 .activeLink {
   compose: link;
   color: #c00443;
+}
+
+.userBlockContainer {
+  padding: 8px;
+}
+.userEmail {
+  font-size: 18px;
+  padding: 0 5px;
+  margin: 0 0 8px 0;
 }

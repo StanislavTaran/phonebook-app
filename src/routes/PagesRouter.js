@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../pages/Home';
 import SignUpPage from '../pages/SignUpPage';
 import LoginPage from '../pages/LogInPage';
@@ -20,6 +20,7 @@ const PagesRouter = () => (
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignUpPage} />
       <Route path="/contacts" component={ContactsPageAsync} />
+      <Redirect to="/" />
     </Switch>
   </Suspense>
 );

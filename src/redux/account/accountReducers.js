@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { deleteAccountSucces, deleteAccountError } from './accountActions';
-import { logInSucces, signupSucces, logout } from '../session/sessionActions';
+import { logInSucces, signupSucces, logout, refreshUserSucces } from '../session/sessionActions';
 
 const account = createReducer(
   {},
@@ -10,6 +10,7 @@ const account = createReducer(
     [logout]: () => ({}),
     [logInSucces]: (state, action) => ({ ...action.payload.data.user }),
     [signupSucces]: (state, action) => ({ ...action.payload.data.user }),
+    [refreshUserSucces]: (state, action) => ({ ...action.payload.data }),
   },
 );
 

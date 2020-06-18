@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { TextField, Button, Container } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import AccountBoxRoundedIcon from '@material-ui/icons/AccountBoxRounded';
 import propTypes from 'prop-types';
 import styles from './SignupForm.module.css';
 
@@ -24,36 +27,71 @@ class SignUpForm extends Component {
   render() {
     const { name, email, password } = this.state;
     return (
-      <form onSubmit={this.submitHandler}>
-        <label className={styles.label}>
-          Name
-          <input className={styles.input} name="name" value={name} onChange={this.changeHandler} />
-        </label>
-        <label className={styles.label}>
-          Email
-          <input
-            className={styles.input}
+      <Container maxWidth="sm">
+        <div className={styles.loginBar}>
+          <AccountBoxRoundedIcon color="primary" fontSize="large" />
+          <span>Please sign up for using Phonebook!</span>
+        </div>
+
+        <form onSubmit={this.submitHandler} className={styles.form}>
+          <TextField
+            fullWidth
+            variant="filled"
+            margin="normal"
+            label="NAME"
+            id="signup-input-name"
+            helperText="Enter your name"
+            color="primary"
+            name="name"
+            value={name}
+            onChange={this.changeHandler}
+          />
+
+          <TextField
+            fullWidth
+            variant="filled"
+            margin="normal"
+            label="EMAIL"
+            id="signup-input-email"
+            helperText="Enter your Email"
+            color="primary"
             type="email"
             name="email"
             value={email}
             onChange={this.changeHandler}
           />
-        </label>
-        <label className={styles.label}>
-          Password
-          <input
-            className={styles.input}
+
+          <TextField
+            fullWidth
+            variant="filled"
+            margin="normal"
+            label="EMAIL"
+            id="signup-input-email"
+            helperText="Enter password"
+            color="primary"
             type="password"
             name="password"
             value={password}
             onChange={this.changeHandler}
           />
-        </label>
 
-        <button className={styles.button} type="submit">
-          Sign Up
-        </button>
-      </form>
+          <Button
+            color="primary"
+            size="large"
+            variant="contained"
+            className={styles.button}
+            type="submit"
+          >
+            Sign Up
+          </Button>
+          <div>Already have an account?</div>
+          <Button color="secondary" size="large" variant="outlined" className={styles.button}>
+            <Link className={styles.buttonSecondary} to="/login">
+              LOG IN
+            </Link>
+          </Button>
+        </form>
+      </Container>
     );
   }
 }

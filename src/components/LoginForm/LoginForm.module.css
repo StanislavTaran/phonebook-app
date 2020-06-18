@@ -1,22 +1,27 @@
-.label {
-  display: block;
-}
-
 .input {
   display: block;
   min-width: 500px;
 }
 
 .button {
-  display: block;
   width: 300px;
-  padding: 15px 20px;
-  border: none;
-  background-color: #060380;
-  color: #fff;
+}
+.buttonSecondary {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.button:hover {
-  cursor: pointer;
-  background-color: #1a188d;
+.loginBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

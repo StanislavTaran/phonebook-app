@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { validateAll } from 'indicative/validator';
+import { Button } from '@material-ui/core';
 import Notification from '../Notification/Notification';
 import styles from './ContactForm.module.css';
 
@@ -122,9 +123,9 @@ class ContactForm extends Component {
             />
             {errors && <Notification title={errors.number} />}
           </div>
-          <button className={styles.button} type="submit">
-            Add contact
-          </button>
+          <Button fullWidth color="primary" className={styles.button} type="submit">
+            ADD CONTACT
+          </Button>
         </form>
       </div>
     );
