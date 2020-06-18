@@ -37,6 +37,7 @@ class LoginForm extends Component {
 
         <form onSubmit={this.submitHandler} className={styles.form}>
           <TextField
+            required
             fullWidth
             variant="filled"
             margin="normal"
@@ -51,6 +52,7 @@ class LoginForm extends Component {
           />
 
           <TextField
+            required
             fullWidth
             variant="filled"
             multiline

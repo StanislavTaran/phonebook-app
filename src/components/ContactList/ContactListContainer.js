@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import ContactList from './ContactList';
-import { getFilteredContacts } from '../../redux/phonebook/selectors';
+import { getFilteredSortedContacts } from '../../redux/phonebook/selectors';
 
 const mapStateToProps = state => {
   return {
-    filteredContacts: getFilteredContacts(state),
+    filteredContacts: getFilteredSortedContacts(state),
   };
 };
 

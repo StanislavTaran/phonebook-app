@@ -7,10 +7,10 @@ const ContactItem = ({ contactItem, onDeleteContact }) => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.numberInfo}>
-        <span className={styles.name}>{name}</span>
-        <span>{number}</span>
-      </p>
+      <div className={styles.numberInfo}>
+        <div className={styles.name}>{name}</div>
+        <div className={styles.number}>{number}</div>
+      </div>
       <button className={styles.buttonDelete} onClick={() => onDeleteContact(id)} type="button">
         {null}
       </button>

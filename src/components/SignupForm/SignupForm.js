@@ -35,6 +35,7 @@ class SignUpForm extends Component {
 
         <form onSubmit={this.submitHandler} className={styles.form}>
           <TextField
+            required
             fullWidth
             variant="filled"
             margin="normal"
@@ -48,6 +49,7 @@ class SignUpForm extends Component {
           />
 
           <TextField
+            required
             fullWidth
             variant="filled"
             margin="normal"
@@ -62,6 +64,7 @@ class SignUpForm extends Component {
           />
 
           <TextField
+            required
             fullWidth
             variant="filled"
             margin="normal"

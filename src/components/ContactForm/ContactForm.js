@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { validateAll } from 'indicative/validator';
-import { Button } from '@material-ui/core';
-import Notification from '../Notification/Notification';
+import { Button, TextField } from '@material-ui/core';
 import styles from './ContactForm.module.css';
 
 const rules = {
@@ -97,7 +96,13 @@ class ContactForm extends Component {
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <div>
             <label htmlFor={this.InputNameId}>Name:</label>
-            <input
+            <TextField
+              error={errors && errors.name}
+              fullWidth
+              helperText={errors && errors.name}
+              variant="outlined"
+              margin="normal"
+              color="primary"
               className={styles.input}
               name="name"
               id={this.InputNameId}
@@ -107,11 +112,16 @@ class ContactForm extends Component {
               autoComplete="off"
               maxLength={20}
             />
-            {errors && <Notification title={errors.name} />}
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor={this.InputNuberId}>Number:</label>
-            <input
+            <TextField
+              error={errors && errors.number}
+              fullWidth
+              helperText={errors && errors.number}
+              variant="outlined"
+              margin="normal"
+              color="primary"
               className={styles.input}
               name="number"
               id={this.InputNuberId}
@@ -121,7 +131,6 @@ class ContactForm extends Component {
               autoComplete="off"
               maxLength={10}
             />
-            {errors && <Notification title={errors.number} />}
           </div>
           <Button fullWidth color="primary" className={styles.button} type="submit">
             ADD CONTACT

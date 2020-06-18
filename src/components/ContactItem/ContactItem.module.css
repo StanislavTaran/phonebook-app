@@ -42,6 +42,10 @@
 }
 
 .name {
-  display: inline-block;
-  width: 40%;
+  font-size: 22px;
+}
+
+.number {
+  font-size: 18px;
+  color: #666666;
 }

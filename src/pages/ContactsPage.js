@@ -15,7 +15,7 @@ const ContactsPage = ({ contacts, getUserContacts }) => {
     getUserContacts();
   }, [getUserContacts]);
   return (
-    <>
+    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
       <ContactForm />
       <CSSTransition
         in={contacts.length > 1}
@@ -33,7 +33,7 @@ const ContactsPage = ({ contacts, getUserContacts }) => {
       >
         <ContactList />
       </CSSTransition>
-    </>
+    </div>
   );
 };
 

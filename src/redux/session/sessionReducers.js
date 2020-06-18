@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import * as actions from './sessionActions';
 
+// todo обновить все редьюсеры ошибок, сброс при успехе
 const user = createReducer(
   {},
   {
@@ -26,7 +27,10 @@ const token = createReducer(null, {
 });
 
 const error = createReducer(null, {
-  [actions.logInError]: (state, action) => action.payload,
+  [actions.logInError]: (state, action) =>
+    action.payload === 'Request failed with status code 400'
+      ? 'Error! It looks like the login or password is wrong'
+      : 'Something went wrong! Please try later',
   [actions.signupError]: (state, action) => action.payload,
   [actions.refreshUserError]: (state, action) => action.payload,
   [actions.logInSucces]: () => ({}),

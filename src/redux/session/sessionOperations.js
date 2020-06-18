@@ -5,6 +5,7 @@ import { getToken } from './sessionSelectors';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
+// todo обработать ошибки
 const setAuthToken = token => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
