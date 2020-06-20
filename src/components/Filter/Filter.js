@@ -6,7 +6,6 @@ import styles from './Filter.module.css';
 const Filter = ({ hanleFilterChange }) => {
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>Find contacts by name:</h3>
       <TextField
         fullWidth
         variant="outlined"

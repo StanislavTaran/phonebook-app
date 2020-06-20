@@ -2,6 +2,7 @@
 import axios from 'axios';
 import * as actions from './sessionActions';
 import { getToken } from './sessionSelectors';
+import * as phonebookAPI from '../../api/phonebook-api';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
@@ -17,8 +18,8 @@ const clearAuthToken = () => {
 export const login = credentials => dispatch => {
   dispatch(actions.logInRequest());
 
-  axios
-    .post('/users/login', credentials)
+  phonebookAPI
+    .login(credentials)
     .then(res => {
       setAuthToken(res.data.token);
       dispatch(actions.logInSucces(res));
@@ -31,8 +32,8 @@ export const login = credentials => dispatch => {
 export const signup = credentials => dispatch => {
   dispatch(actions.signupRequest());
 
-  axios
-    .post('/users/signup', credentials)
+  phonebookAPI
+    .signup(credentials)
     .then(res => {
       dispatch(actions.signupSucces(res));
     })
@@ -52,8 +53,8 @@ export const refreshUser = () => (dispatch, getState) => {
 
   dispatch(actions.refreshUserRequest());
 
-  axios
-    .get('/users/current')
+  phonebookAPI
+    .refreshCurrentUser()
     .then(res => {
       dispatch(actions.refreshUserSucces(res));
     })
@@ -63,8 +64,20 @@ export const refreshUser = () => (dispatch, getState) => {
     });
 };
 
-export const logOut = () => dispatch => {
-  clearAuthToken();
+export const logOut = () => (dispatch, getState) => {
+  const token = getToken(getState());
 
-  dispatch(actions.logout());
+  setAuthToken(token);
+
+  dispatch(actions.logoutRequest());
+
+  phonebookAPI
+    .logout()
+    .then(() => {
+      dispatch(actions.logoutSucces());
+      clearAuthToken();
+    })
+    .catch(error => {
+      dispatch(actions.logoutError(error));
+    });
 };

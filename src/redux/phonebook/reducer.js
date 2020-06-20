@@ -11,25 +11,25 @@ import {
   onExistFlagAction,
   offExistFlagAction,
 } from './actions';
-import { logout } from '../session/sessionActions';
+import { logoutSucces } from '../session/sessionActions';
 
 const contacts = createReducer([], {
   [getContactsSucces]: (state, action) => [...action.payload],
   [addContactSucces]: (state, action) => [...state, action.payload],
   [deleteContactSucces]: (state, action) => state.filter(contact => contact.id !== action.payload),
-  [logout]: () => [],
+  [logoutSucces]: () => [],
 });
 
 const errors = createReducer([], {
   [getContactsError]: (state, action) => ({ ...action.payload }),
   [addContactError]: (state, action) => ({ ...action.payload }),
   [deleteContactError]: (state, action) => ({ ...action.payload }),
-  [logout]: () => [],
+  [logoutSucces]: () => [],
 });
 
 const filter = createReducer('', {
   [changeFilterAction]: (state, action) => action.payload,
-  [logout]: () => '',
+  [logoutSucces]: () => '',
 });
 
 const notificationState = { isContactAlreadyExist: false };

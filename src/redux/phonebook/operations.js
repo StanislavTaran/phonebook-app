@@ -13,6 +13,7 @@ import {
   deleteContactError,
 } from './actions';
 import { getToken } from '../session/sessionSelectors';
+import * as phonebookAPI from '../../api/phonebook-api';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
@@ -35,8 +36,8 @@ export const downloadContacts = () => (dispatch, getState) => {
 
   dispatch(getContactsRequest());
 
-  axios
-    .get('/contacts', options)
+  phonebookAPI
+    .getContacts(options)
     .then(res => {
       dispatch(getContactsSucces(res.data));
     })
@@ -55,8 +56,8 @@ export const addContact = credentials => (dispatch, getState) => {
   };
   dispatch(addContactRequest());
 
-  axios
-    .post('/contacts', credentials, options)
+  phonebookAPI
+    .addContact(credentials, options)
     .then(res => {
       dispatch(addContactSucces(res.data));
     })
@@ -75,8 +76,8 @@ export const deleteContact = id => (dispatch, getState) => {
   };
   dispatch(deleteContactRequest());
 
-  axios
-    .delete(`/contacts/${id}`, options)
+  phonebookAPI
+    .deleteContact(id, options)
     .then(() => {
       dispatch(deleteContactSucces(id));
     })

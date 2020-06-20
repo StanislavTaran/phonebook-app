@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { validateAll } from 'indicative/validator';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, InputAdornment } from '@material-ui/core';
+import FaceIcon from '@material-ui/icons/Face';
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import styles from './ContactForm.module.css';
+
+// todo добавить маску для инпута телефона - react-input-mask
 
 const rules = {
   name: 'required | string',
@@ -111,6 +115,13 @@ class ContactForm extends Component {
               value={name}
               autoComplete="off"
               maxLength={20}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <FaceIcon />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
           <div className={styles.inputContainer}>
@@ -130,6 +141,13 @@ class ContactForm extends Component {
               value={number}
               autoComplete="off"
               maxLength={10}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PhoneAndroidIcon />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
           <Button fullWidth color="primary" className={styles.button} type="submit">
