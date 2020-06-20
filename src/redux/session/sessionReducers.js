@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import * as actions from './sessionActions';
 
-// todo обновить все редьюсеры ошибок, сброс при успехе
 const user = createReducer(
   {},
   {

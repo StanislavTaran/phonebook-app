@@ -16,8 +16,6 @@ export const signupError = createAction('session/SIGNUP_ERROR');
 
 // LOGOUT
 
-// todo сделать опреацию с запросом на бекенд для логаута
-
 export const logoutRequest = createAction('session/LOGOUT_REQUEST');
 export const logoutSucces = createAction('session/LOGOUT_SUCCES');
 export const logoutError = createAction('session/LOGOUT_ERROR');

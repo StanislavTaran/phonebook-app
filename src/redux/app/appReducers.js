@@ -36,6 +36,10 @@ const isLoading = createReducer(false, {
   [sessionActions.signupRequest]: () => true,
   [sessionActions.signupSucces]: () => false,
   [sessionActions.signupError]: () => false,
+
+  [sessionActions.logoutRequest]: () => true,
+  [sessionActions.logoutSucces]: () => false,
+  [sessionActions.logoutError]: () => false,
 });
 
 export default combineReducers({

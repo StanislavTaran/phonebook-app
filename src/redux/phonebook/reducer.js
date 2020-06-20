@@ -24,6 +24,9 @@ const errors = createReducer([], {
   [getContactsError]: (state, action) => ({ ...action.payload }),
   [addContactError]: (state, action) => ({ ...action.payload }),
   [deleteContactError]: (state, action) => ({ ...action.payload }),
+  [getContactsSucces]: () => [],
+  [addContactSucces]: () => [],
+  [deleteContactSucces]: () => [],
   [logoutSucces]: () => [],
 });
 

@@ -23,6 +23,8 @@ const error = createReducer(
   {},
   {
     [deleteAccountError]: (state, action) => ({ ...action.payload }),
+    [deleteAccountSucces]: () => ({}),
+    [logoutSucces]: () => ({}),
   },
 );
 
