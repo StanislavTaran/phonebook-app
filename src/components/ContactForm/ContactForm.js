@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { validateAll } from 'indicative/validator';
 import { Button, TextField, InputAdornment } from '@material-ui/core';
+import InputMask from 'react-input-mask';
 import FaceIcon from '@material-ui/icons/Face';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import styles from './ContactForm.module.css';
@@ -33,21 +34,9 @@ class ContactForm extends Component {
 
   handleChange = e => {
     const { value, name } = e.target;
-    let replaceValue = value;
-
-    if (name === 'number') {
-      replaceValue = value.replace(/[^\d]/g, '');
-
-      const regex = /^([^\s]{3})([^\s]{3})([^\s]{2})([^\s]{2})$/g;
-      const match = regex.exec(replaceValue);
-      if (match) {
-        match.shift();
-        replaceValue = match.join('-');
-      }
-    }
 
     this.setState({
-      [name]: replaceValue,
+      [name]: value,
     });
   };
 
@@ -126,29 +115,37 @@ class ContactForm extends Component {
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor={this.InputNuberId}>Number:</label>
-            <TextField
-              error={errors && errors.number}
-              fullWidth
-              helperText={errors && errors.number}
-              variant="outlined"
-              margin="normal"
-              color="primary"
-              className={styles.input}
-              name="number"
-              id={this.InputNuberId}
-              type="text"
+
+            <InputMask
+              mask="+380 99 999 99 99"
+              maskChar={null}
               onChange={this.handleChange}
               value={number}
-              autoComplete="off"
-              maxLength={10}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PhoneAndroidIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
+            >
+              {inputProps => (
+                <TextField
+                  error={errors && errors.number}
+                  fullWidth
+                  helperText={errors && errors.number}
+                  variant="outlined"
+                  margin="normal"
+                  color="primary"
+                  className={styles.input}
+                  name="number"
+                  id={this.InputNuberId}
+                  type="text"
+                  autoComplete={false}
+                  InputProps={{
+                    ...inputProps,
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <PhoneAndroidIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              )}
+            </InputMask>
           </div>
           <Button fullWidth color="primary" className={styles.button} type="submit">
             ADD CONTACT

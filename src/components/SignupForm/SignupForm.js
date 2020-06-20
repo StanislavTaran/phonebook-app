@@ -68,7 +68,7 @@ class SignUpForm extends Component {
             fullWidth
             variant="filled"
             margin="normal"
-            label="EMAIL"
+            label="PASSWORD"
             id="signup-input-email"
             helperText="Enter password"
             color="primary"

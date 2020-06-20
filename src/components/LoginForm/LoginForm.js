@@ -7,8 +7,6 @@ import propTypes from 'prop-types';
 import styles from './LoginForm.module.css';
 import * as sessionOperations from '../../redux/session/sessionOperations';
 
-// todo пофиксить скрытие пароля при введении
-
 class LoginForm extends Component {
   state = { email: '', password: '' };
 
@@ -42,7 +40,6 @@ class LoginForm extends Component {
             variant="filled"
             margin="normal"
             label="EMAIL"
-            id="loginform-input-email"
             helperText="Enter your Email"
             color="primary"
             type="email"
@@ -55,17 +52,17 @@ class LoginForm extends Component {
             required
             fullWidth
             variant="filled"
-            multiline
             margin="normal"
             label="PASSWORD"
-            id="loginform-input-password"
-            helperText="Enter the password"
+            id="signup-input-email"
+            helperText="Enter password"
             color="primary"
             type="password"
             name="password"
             value={password}
             onChange={this.changeHandler}
           />
+
           <Button
             color="primary"
             size="large"
