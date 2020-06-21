@@ -1,11 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// NOTIFICATION
-
-export const onExistFlagAction = createAction('notification/ON_FLAG_EXIST');
-
-export const offExistFlagAction = createAction('notification/OFF_FLAG_EXIST');
-
 // FILTER
 
 export const changeFilterAction = createAction('contacts/CHANGE_FILTER');

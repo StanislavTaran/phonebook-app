@@ -6,9 +6,12 @@ import { Button, TextField, InputAdornment } from '@material-ui/core';
 import InputMask from 'react-input-mask';
 import FaceIcon from '@material-ui/icons/Face';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import { CSSTransition } from 'react-transition-group';
+import PopUpNotification from '../PopUpNotification/PopUpNotification';
+import slideReverseTransition from '../../transitions/slide-reverse.module.css';
 import styles from './ContactForm.module.css';
 
-// todo добавить маску для инпута телефона - react-input-mask
+// todo сделать сервис уведомлений
 
 const rules = {
   name: 'required | string',
@@ -26,6 +29,7 @@ class ContactForm extends Component {
     name: '',
     number: '',
     errors: null,
+    isContactAlreadyExist: false,
   };
 
   InputNameId = uuidv4();
@@ -40,11 +44,23 @@ class ContactForm extends Component {
     });
   };
 
+  toggleContactExistFlag = () => {
+    this.setState(prevState => ({
+      isContactAlreadyExist: !prevState.isContactAlreadyExist,
+    }));
+    setTimeout(() => {
+      this.setState(prevState => ({
+        isContactAlreadyExist: !prevState.isContactAlreadyExist,
+      }));
+    }, 2000);
+  };
+
   resetForm = () => {
     this.setState({
       name: '',
       number: '',
       errors: null,
+      isContactAlreadyExist: false,
     });
   };
 
@@ -55,7 +71,7 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { addContact, showNotification } = this.props;
+    const { addContact } = this.props;
 
     const { name, number } = this.state;
 
@@ -64,7 +80,7 @@ class ContactForm extends Component {
         const isContactExist = this.hasContact(name);
 
         if (isContactExist) {
-          showNotification();
+          this.toggleContactExistFlag();
         } else {
           addContact({ name, number });
           this.resetForm();
@@ -82,10 +98,18 @@ class ContactForm extends Component {
   };
 
   render() {
-    const { name, number, errors } = this.state;
+    const { name, number, errors, isContactAlreadyExist } = this.state;
 
     return (
       <div>
+        <CSSTransition
+          in={isContactAlreadyExist}
+          timeout={250}
+          classNames={slideReverseTransition}
+          unmountOnExit
+        >
+          <PopUpNotification type="error" title="Contact with the same name already exist!" />
+        </CSSTransition>
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <div>
             <label htmlFor={this.InputNameId}>Name:</label>
@@ -164,7 +188,6 @@ ContactForm.propTypes = {
     }).isRequired,
   ).isRequired,
   addContact: propTypes.func.isRequired,
-  showNotification: propTypes.func.isRequired,
 };
 
 export default ContactForm;

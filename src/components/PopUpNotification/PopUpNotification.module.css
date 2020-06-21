@@ -1,15 +1,9 @@
 .container {
-  display: flex;
-  align-items: center;
   position: absolute;
   top: 15px;
   right: 15px;
-  width: 180px;
-  height: 80px;
-  background-color: #dc143c;
-  opacity: 0.8;
+  width: 280px;
   color: #fff;
-  border-radius: 10px;
   font-size: 18px;
-  padding: 0 5px;
+  z-index: 999;
 }

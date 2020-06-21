@@ -5,10 +5,8 @@ import styles from './AccountInfo.module.css';
 
 const AccountInfo = ({ email, name, onDeleteAccount, contacts, getUserContacts }) => {
   useEffect(() => {
-    if (contacts.length < 1) {
-      getUserContacts();
-    }
-  }, [getUserContacts, contacts]);
+    getUserContacts();
+  }, [getUserContacts]);
 
   return (
     <section className={styles.section}>

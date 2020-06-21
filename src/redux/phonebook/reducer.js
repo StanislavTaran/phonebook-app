@@ -8,8 +8,6 @@ import {
   getContactsSucces,
   getContactsError,
   changeFilterAction,
-  onExistFlagAction,
-  offExistFlagAction,
 } from './actions';
 import { logoutSucces } from '../session/sessionActions';
 
@@ -35,17 +33,10 @@ const filter = createReducer('', {
   [logoutSucces]: () => '',
 });
 
-const notificationState = { isContactAlreadyExist: false };
-const notification = createReducer(notificationState, {
-  [onExistFlagAction]: state => ({ ...state, isContactAlreadyExist: true }),
-  [offExistFlagAction]: state => ({ ...state, isContactAlreadyExist: false }),
-});
-
 const contactsReducer = combineReducers({
   contacts,
   filter,
   errors,
-  notification,
 });
 
 export default contactsReducer;

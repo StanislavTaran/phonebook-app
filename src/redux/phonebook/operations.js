@@ -1,7 +1,5 @@
 import axios from 'axios';
 import {
-  onExistFlagAction,
-  offExistFlagAction,
   addContactRequest,
   addContactSucces,
   addContactError,
@@ -16,14 +14,6 @@ import { getToken } from '../session/sessionSelectors';
 import * as phonebookAPI from '../../api/phonebook-api';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
-
-export const toogleExistFlag = () => dispatch => {
-  dispatch(onExistFlagAction());
-
-  setTimeout(() => {
-    dispatch(offExistFlagAction());
-  }, 3000);
-};
 
 export const downloadContacts = () => (dispatch, getState) => {
   const token = getToken(getState());
