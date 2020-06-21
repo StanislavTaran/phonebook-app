@@ -1,4 +1,4 @@
-import axios from 'axios';
+/* eslint-disable dot-notation */
 import {
   addContactRequest,
   addContactSucces,
@@ -10,24 +10,13 @@ import {
   deleteContactSucces,
   deleteContactError,
 } from './actions';
-import { getToken } from '../session/sessionSelectors';
 import * as phonebookAPI from '../../api/phonebook-api';
 
-axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
-
-export const downloadContacts = () => (dispatch, getState) => {
-  const token = getToken(getState());
-
-  const options = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
+export const downloadContacts = () => dispatch => {
   dispatch(getContactsRequest());
 
   phonebookAPI
-    .getContacts(options)
+    .getContacts()
     .then(res => {
       dispatch(getContactsSucces(res.data));
     })
@@ -36,18 +25,11 @@ export const downloadContacts = () => (dispatch, getState) => {
     });
 };
 
-export const addContact = credentials => (dispatch, getState) => {
-  const token = getToken(getState());
-
-  const options = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+export const addContact = credentials => dispatch => {
   dispatch(addContactRequest());
 
   phonebookAPI
-    .addContact(credentials, options)
+    .addContact(credentials)
     .then(res => {
       dispatch(addContactSucces(res.data));
     })
@@ -56,18 +38,11 @@ export const addContact = credentials => (dispatch, getState) => {
     });
 };
 
-export const deleteContact = id => (dispatch, getState) => {
-  const token = getToken(getState());
-
-  const options = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+export const deleteContact = id => dispatch => {
   dispatch(deleteContactRequest());
 
   phonebookAPI
-    .deleteContact(id, options)
+    .deleteContact(id)
     .then(() => {
       dispatch(deleteContactSucces(id));
     })

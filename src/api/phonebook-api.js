@@ -1,13 +1,12 @@
 import axios from 'axios';
 
 // ACCOUNT
-export const deleteAccount = options => axios.delete(`/users/current`, options);
+export const deleteAccount = () => axios.delete(`/users/current`);
 
 // PHONEBOOK
-// todo make SetAuthToken in operations
-export const getContacts = options => axios.get('/contacts', options);
-export const addContact = (credentials, options) => axios.post('/contacts', credentials, options);
-export const deleteContact = (id, options) => axios.delete(`/contacts/${id}`, options);
+export const getContacts = () => axios.get('/contacts');
+export const addContact = credentials => axios.post('/contacts', credentials);
+export const deleteContact = id => axios.delete(`/contacts/${id}`);
 
 // SESSION
 export const login = credentials => axios.post('/users/login', credentials);
