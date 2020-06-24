@@ -1,5 +1,6 @@
 import React from 'react';
+import WelcomeBlock from '../components/WelcomeBlock/WelcomeBlockContainer';
 
-const Home = () => <h2>This is the home page. I will write information here later...</h2>;
+const Home = () => <WelcomeBlock />;
 
 export default Home;

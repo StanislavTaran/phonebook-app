@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { validateAll } from 'indicative/validator';
-import { Button, TextField, InputAdornment } from '@material-ui/core';
+import { Button, TextField, InputAdornment, CircularProgress } from '@material-ui/core';
 import InputMask from 'react-input-mask';
 import FaceIcon from '@material-ui/icons/Face';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
@@ -10,8 +10,6 @@ import { CSSTransition } from 'react-transition-group';
 import PopUpNotification from '../PopUpNotification/PopUpNotification';
 import slideReverseTransition from '../../transitions/slide-reverse.module.css';
 import styles from './ContactForm.module.css';
-
-// todo сделать сервис уведомлений
 
 const rules = {
   name: 'required | string',
@@ -99,7 +97,7 @@ class ContactForm extends Component {
 
   render() {
     const { name, number, errors, isContactAlreadyExist } = this.state;
-
+    const { isLoading } = this.props;
     return (
       <div>
         <CSSTransition
@@ -171,9 +169,13 @@ class ContactForm extends Component {
               )}
             </InputMask>
           </div>
-          <Button fullWidth color="primary" className={styles.button} type="submit">
-            ADD CONTACT
-          </Button>
+          {isLoading ? (
+            <CircularProgress style={{ display: 'block', margin: '0 auto' }} />
+          ) : (
+            <Button fullWidth color="primary" variant="contained" type="submit">
+              ADD CONTACT
+            </Button>
+          )}
         </form>
       </div>
     );
@@ -188,6 +190,7 @@ ContactForm.propTypes = {
     }).isRequired,
   ).isRequired,
   addContact: propTypes.func.isRequired,
+  isLoading: propTypes.bool.isRequired,
 };
 
 export default ContactForm;
