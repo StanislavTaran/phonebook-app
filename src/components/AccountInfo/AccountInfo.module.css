@@ -1,9 +1,9 @@
 .section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 7px;
-  grid-row-gap: 7px;
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
   padding: 10px;
 }
 
