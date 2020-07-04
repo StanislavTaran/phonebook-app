@@ -8,13 +8,18 @@
 }
 
 .article {
-  border: 2px solid #060380;
-  background-color: rgb(225, 224, 226);
+  height: 300px;
+  background-color: var(--main-element-color);
   border-radius: 10px;
   padding: 5px;
   transition: all ease-in-out 0.3s;
   -webkit-box-shadow: -4px 8px 23px 1px rgba(255, 47, 108, 0.08);
   box-shadow: -4px 8px 23px 1px rgba(255, 47, 108, 0.08);
+  transition: all 0.3s ease-in-out;
+}
+
+.article:hover {
+  transform: scale(1.007);
 }
 
 .fieldTitle {

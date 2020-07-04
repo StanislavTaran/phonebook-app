@@ -2,3 +2,13 @@
   display: flex;
   justify-content: center;
 }
+
+.imagePhone {
+  display: block;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.info {
+  text-align: center;
+}

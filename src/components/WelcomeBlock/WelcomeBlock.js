@@ -10,7 +10,12 @@ const WelcomeBlock = ({ name }) => (
       <PeopleOutlineIcon color="primary" />
     </section>
     <section>
-      <p>
+      <img
+        src="https://cdn.pixabay.com/photo/2014/07/10/06/51/phone-388838_1280.png"
+        alt="phone"
+        className={styles.imagePhone}
+      />
+      <p className={styles.info}>
         It&apos;s simple Phonebook application, created by React js, using Redux for organization
         aplication state.
       </p>
