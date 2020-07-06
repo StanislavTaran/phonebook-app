@@ -18,10 +18,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-.article:hover {
-  transform: scale(1.007);
-}
-
 .fieldTitle {
   color: #666666;
 }
